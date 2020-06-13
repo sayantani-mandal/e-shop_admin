@@ -1,0 +1,79 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="onSelect()">
+    <h5>Product Name</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter the Name</mat-label>
+      <input matInput type="text" formControlName="name" />
+    </mat-form-field>
+    <br />
+
+    <h5>Product Description</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>give details</mat-label>
+      <input matInput type="text" formControlName="desc" />
+    </mat-form-field>
+    <br />
+
+    <h5>Product Specification</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>give Specification</mat-label>
+      <input matInput type="text" formControlName="spec" />
+    </mat-form-field>
+    <br />
+
+    <h5>Select Brands</h5>
+    <div style="width: 20%;">
+      <mat-label>Brands</mat-label>
+      <mat-select formControlName="brand">
+        <mat-option *ngFor="let brand of brands" [value]="brand._id">{{
+          brand.brandName
+        }}</mat-option>
+      </mat-select>
+    </div>
+    <br />
+    <h5>Select Category</h5>
+    <div style="width: 20%;">
+      <mat-label>Categories</mat-label>
+      <mat-select formControlName="cat">
+        <mat-option *ngFor="let cat of categories" [value]="cat._id">{{
+          cat.catName
+        }}</mat-option>
+      </mat-select>
+    </div>
+    <br />
+
+    <h5>Price</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter the price</mat-label>
+      <input matInput type="number" formControlName="price" />
+    </mat-form-field>
+    <br />
+
+    <section>
+      <button mat-raised-button color="accent" type="submit">
+        Add Product
+      </button>
+    </section>
+    <br />
+
+    <br />
+  </form>
+</mat-card>
+
+<!-- <h5>Select Product</h5>
+    <div style="width: 20%;">
+      <mat-label>Product</mat-label>
+      <mat-select formControlName="pro">
+        <mat-option *ngFor="let pro of products" [value]="pro._id">{{
+          pro.proName
+        }}</mat-option>
+      </mat-select>
+    </div>
+    <br />
+
+    <br />
+    <h5>Product Image</h5>
+    <input type="file" multiple (change)="onFileSelected($event)" />
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+      <img [src]="imagePreview" [alt]="form.value.name" />
+    </div> -->

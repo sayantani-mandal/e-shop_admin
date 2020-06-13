@@ -1,0 +1,53 @@
+<div class="product-class">
+  <br /><br />
+  <button
+    mat-raised-button
+    color="accent"
+    style="float: right;"
+    routerLink="/"
+    (click)="onClick()"
+  >
+    New Product
+  </button>
+
+  <div *ngFor="let product of products">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+          <img
+            mat-card-image
+            [src]="
+              'http://localhost:3006/' +
+              product.categories[0].brands[0].brandImage
+            "
+            alt="Image of the Brand"
+          />
+        </div>
+        <mat-card-title>{{ product.proName }}</mat-card-title>
+        <mat-card-subtitle>{{
+          product.categories[0].catName
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="'http://localhost:3006/' + product.proImages[1].proImage"
+        alt="Image of the Product"
+      />
+      <mat-card-content>
+        <p>Rs : {{ product.price }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">EDIT</button>
+        <button mat-raised-button color="warn" (click)="onDel(product._id)">
+          DELETE
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <br /><br />
+  </div>
+  <br />
+</div>
+<!-- <mat-card-subtitle>{{
+          product.categories[0].brands[0].brandName
+        }}</mat-card-subtitle>
+        <p>{{ product.proDes }}</p> -->

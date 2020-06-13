@@ -1,0 +1,59 @@
+<div class="main-div">
+  <mat-card
+    style="width: 300px;"
+    class="mat-card"
+    id="card"
+    style="text-align: center;"
+  >
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <!-- <div *ngIf="error" class="alert alert-warning">
+      <strong>Warning!</strong> {{ error }}
+    </div> -->
+    <mat-toolbar color="primary">Login Page</mat-toolbar>
+
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Enter Email"
+          [(ngModel)]="email"
+          required
+        />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Enter Password"
+          [(ngModel)]="password"
+          required
+        />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <section>
+      <mat-spinner *ngIf="showSpinner"></mat-spinner>
+      <div class="example-button-row">
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary"
+          (click)="login()"
+          [disabled]="!email || !password"
+        >
+          Log In
+        </button>
+      </div>
+    </section>
+  </mat-card>
+</div>

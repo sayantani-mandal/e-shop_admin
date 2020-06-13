@@ -1,0 +1,73 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="false"
+  >
+    <mat-toolbar color="primary">Home</mat-toolbar>
+    <mat-nav-list class="bgimg">
+      <a
+        mat-list-item
+        routerLink="/"
+        (click)="onSelectBrand()"
+        style="color: whitesmoke;"
+        >Brand</a
+      >
+      <a
+        mat-list-item
+        routerLink="/"
+        (click)="onSelected()"
+        style="color: whitesmoke;"
+        >Category</a
+      >
+      <a
+        mat-list-item
+        routerLink="/"
+        (click)="onSelectProduct()"
+        style="color: whitesmoke;"
+        >Product</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="true"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>shop</span>
+      <span class="spacer"></span>
+      <!--<a href="#">Log Out</a>-->
+      <button mat-button [matMenuTriggerFor]="belowMenu">
+        <span class="material-icons">
+          account_circle
+        </span>
+      </button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>My Account</button>
+        <button mat-menu-item routerLink="/" (click)="onLogout()">
+          Logout
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <div *ngIf="isSelected">
+      <!-- <app-category></app-category> -->
+      <router-outlet></router-outlet>
+    </div>
+    <!-- <div>
+      <div *ngIf="isSelectProduct">
+      <app-product></app-product> 
+        <router-outlet></router-outlet>
+      </div>
+    </div> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

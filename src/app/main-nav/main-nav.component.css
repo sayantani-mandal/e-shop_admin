@@ -1,0 +1,61 @@
+/*.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+*/
+
+.sidenav-container {
+  height: 100%;
+  display: block;
+  width: 100%;
+  background: url("C:\Users\Sayantani\nodeAngular\white.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgimg {
+  height: 100%;
+  display: block;
+  width: 100%;
+  background: url("C:\Users\Sayantani\nodeAngular\blue1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+}
+/*
+@media(min-width: 768px){
+  .sidenav{
+    display: none;
+  }
+}*/
+.hidden {
+  display: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar a {
+  display: inline-block;
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}

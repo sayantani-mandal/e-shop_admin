@@ -1,0 +1,16 @@
+.example-full-width {
+  width: 20%;
+}
+section {
+  display: table;
+  margin: 20px;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  max-height: 100%;
+}

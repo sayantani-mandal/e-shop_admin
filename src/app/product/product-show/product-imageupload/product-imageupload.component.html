@@ -1,0 +1,28 @@
+<button mat-button routerLink="/" (click)="onClose()" style="float: right;">
+  <mat-icon>clear</mat-icon>
+</button>
+<br />
+<br />
+<br />
+
+<mat-card>
+  <!-- <div  *ngFor="let product of products"> </div> -->
+  <form [formGroup]="form" (submit)="onClick()">
+    <h5>Product Image</h5>
+    <img *ngFor="let image of images" [src]="image" height="100" />
+    <input type="file" (change)="onFileSelected($event)" multiple />
+    <!-- <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+  <img [src]="imagePreview" [alt]="form.value.name" />
+</div> -->
+    <br />
+    <br />
+
+    <section>
+      <button mat-raised-button color="primary" type="submit">
+        Add Image
+      </button>
+
+      <br /><br />
+    </section>
+  </form>
+</mat-card>

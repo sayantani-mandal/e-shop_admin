@@ -1,0 +1,11 @@
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+section {
+  display: table;
+  margin: 20px;
+}
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}

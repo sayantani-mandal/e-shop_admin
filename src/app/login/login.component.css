@@ -1,0 +1,22 @@
+.main-div mat-card {
+  padding: 0px;
+  top: 50%;
+  max-width: 800px;
+  text-align: center;
+}
+.mat-card {
+  text-align: center;
+  left: 20%;
+  top: 10%;
+}
+.mat-spinner {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  background: url(/link/to/your/image);
+  background-size: 100%;
+}

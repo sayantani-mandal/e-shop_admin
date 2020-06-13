@@ -1,0 +1,25 @@
+<mat-card>
+  <form [formGroup]="form" (submit)="onSelect()">
+    <div *ngIf="error" class="alert alert-warning" style="color: red;">
+      <strong>Warning! {{ error }} </strong>
+    </div>
+    <h5>Brand Name</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>Brand Name</mat-label>
+      <input matInput type="text" formControlName="name" />
+    </mat-form-field>
+
+    <br />
+    <h5>Brand Image</h5>
+    <input type="file" (change)="onFileSelected($event)" />
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+      <img [src]="imagePreview" [alt]="form.value.name" />
+    </div>
+
+    <section>
+      <button mat-raised-button color="warn" type="submit">
+        Add Brand
+      </button>
+    </section>
+  </form>
+</mat-card>
