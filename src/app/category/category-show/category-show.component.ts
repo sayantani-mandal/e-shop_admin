@@ -1,18 +1,21 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { CategoryService } from "../category.service";
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { BrandService } from "src/app/brand/brand.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-category-show",
   templateUrl: "./category-show.component.html",
   styleUrls: ["./category-show.component.css"],
 })
-export class CategoryShowComponent implements OnInit {
+export class CategoryShowComponent implements OnInit, OnDestroy {
   form: FormGroup;
   brands: any;
   brandData = [];
   brandIds = [];
+  error: string = null;
+  authStatus: Subscription;
 
   constructor(
     private catService: CategoryService,
@@ -34,6 +37,10 @@ export class CategoryShowComponent implements OnInit {
   }
 
   onSelect() {
+    if (this.form.invalid) {
+      console.log(this.form);
+      return;
+    }
     console.log(
       this.form.value.name,
       this.form.value.desc,
@@ -49,9 +56,11 @@ export class CategoryShowComponent implements OnInit {
       this.form.value.desc,
       this.brandIds
     );
+    this.authStatus = this.catService.getAuthListener().subscribe((error) => {
+      this.error = error;
+    });
   }
-
-  // toggle(id: string) {
-  //   console.log(id);
-  // }
+  ngOnDestroy() {
+    this.authStatus.unsubscribe();
+  }
 }

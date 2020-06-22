@@ -1,0 +1,32 @@
+<mat-card>
+  <br />
+  <form (submit)="onSelect()">
+    <h5>Category Name</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>edit the Name</mat-label>
+      <input matInput type="text" value="" />
+    </mat-form-field>
+    <br />
+
+    <h5>Category Description</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>edit details</mat-label>
+      <input matInput type="text" />
+    </mat-form-field>
+    <br />
+
+    <h5>Select Brands</h5>
+    <div style="width: 20%;">
+      <mat-label>Brands</mat-label>
+      <mat-select multiple>
+        <mat-option>Brand Names</mat-option>
+      </mat-select>
+    </div>
+
+    <section>
+      <button mat-raised-button color="accent" type="submit">
+        Update
+      </button>
+    </section>
+  </form>
+</mat-card>

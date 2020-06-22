@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { LoginService } from "../login/login.service";
 
 @Injectable({
   providedIn: "root",
@@ -7,10 +8,14 @@ import { HttpClient } from "@angular/common/http";
 export class BrandService {
   brandName: string;
   selectedFile: File = null;
-  constructor(private http: HttpClient) {}
+  token: string = this.loginService.getToken();
+
+  constructor(private http: HttpClient, private loginService: LoginService) {}
 
   getBrand() {
-    return this.http.get("http://localhost:3006/api/brands");
+    return this.http.get("http://localhost:3006/api/brands", {
+      headers: { token: this.loginService.getToken() },
+    });
   }
 
   delBrand(id: string) {
@@ -22,14 +27,5 @@ export class BrandService {
     fd.append("brandImage", brandImage);
 
     return this.http.post("http://localhost:3006/api/brands", fd);
-    // .subscribe((res) => {
-    //   console.log(res);
-    // });
-    // (err) => {
-    // if (err) console.log(err);
-    // console.log("Success");
-    // (res) => {
-    // console.log(res);
-    // this.brandName = res.brandName;
   }
 }

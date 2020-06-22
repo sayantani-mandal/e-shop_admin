@@ -1,16 +1,18 @@
 import { Category } from "../shared/category.model";
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Subject } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class CategoryService {
   catName: string;
   catDes: string;
   brandName: string;
-  //  catSelected = new EventEmitter<Category>();
-  //private categories: any
+  error: string = null;
+  private authStatusListener = new Subject<string>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   getCategories() {
     return this.http.get("http://localhost:3006/api/categories");
   }
@@ -20,22 +22,26 @@ export class CategoryService {
   }
 
   addCategory(catName: string, catDes: string, brandId: any) {
-    // const fd = new FormData();
-    // fd.append("catName", catName);
-    // fd.append("catDes", catDes);
-    // fd.append("brandIds", brandId);
-
     const postData = {
       catName: catName,
       catDes: catDes,
       brandIds: brandId,
     };
 
-    //console.log(fd.get("brandIds"));
-    this.http
-      .post("http://localhost:3006/api/categories", postData)
-      .subscribe((res) => {
+    this.http.post("http://localhost:3006/api/categories", postData).subscribe(
+      (res) => {
         console.log(res);
-      });
+        this.router.navigate(["/category"]);
+      },
+      (error) => {
+        console.log(error);
+        this.error = error.error.Error;
+        this.authStatusListener.next(this.error);
+      }
+    );
+  }
+
+  getAuthListener() {
+    return this.authStatusListener.asObservable();
   }
 }

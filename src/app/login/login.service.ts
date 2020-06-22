@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { catchError, tap } from "rxjs/operators";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -9,24 +9,8 @@ import { catchError, tap } from "rxjs/operators";
 export class LoginService {
   private token: string;
   error: string = null;
+  private authStatusListener = new Subject<string>();
   constructor(private http: HttpClient, private router: Router) {}
-
-  // login(email: string, password: string) {
-  //   const authData: any = {
-  //     email: email,
-  //     password: password,
-  //   };
-  //   this.http
-  //     .post<{ token: string }>("http://localhost:3006/api/adminLogin", authData)
-  //     .subscribe((response) => {
-  //       localStorage.setItem("token", response.token);
-  //       this.token = response.token;
-  //       const token = this.token;
-  //       if (token) {
-  //         this.router.navigate(["/dashboard"]);
-  //       }
-  //     });
-  // }
 
   login(email: string, password: string) {
     const authData: any = {
@@ -46,8 +30,8 @@ export class LoginService {
         },
         (error) => {
           console.log(error);
-          this.error = "An error occurred..!";
-          alert(this.error);
+          this.error = error.error.Error;
+          this.authStatusListener.next(this.error);
         }
       );
   }
@@ -66,5 +50,9 @@ export class LoginService {
         localStorage.removeItem("token");
         this.router.navigate(["/login"]);
       });
+  }
+
+  getAuthListener() {
+    return this.authStatusListener.asObservable();
   }
 }

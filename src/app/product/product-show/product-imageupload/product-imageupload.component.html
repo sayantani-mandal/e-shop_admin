@@ -1,6 +1,6 @@
-<button mat-button routerLink="/" (click)="onClose()" style="float: right;">
+<!-- <button mat-button routerLink="/" (click)="onClose()" style="float: right;">
   <mat-icon>clear</mat-icon>
-</button>
+</button> -->
 <br />
 <br />
 <br />
@@ -9,11 +9,20 @@
   <!-- <div  *ngFor="let product of products"> </div> -->
   <form [formGroup]="form" (submit)="onClick()">
     <h5>Product Image</h5>
-    <img *ngFor="let image of images" [src]="image" height="100" />
+    <div *ngIf="imagePreview">
+      <img *ngFor="let image of imagePreview" [src]="image" height="100" />
+    </div>
+
+    <!-- <div *ngIf="imagePreview">
+      <div *ngFor="let image of imagePreview">
+        <div class="image-preview">
+          <img [src]="image" [alt]="form.value.name" />
+        </div>
+      </div>
+    </div> -->
+
     <input type="file" (change)="onFileSelected($event)" multiple />
-    <!-- <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
-  <img [src]="imagePreview" [alt]="form.value.name" />
-</div> -->
+
     <br />
     <br />
 

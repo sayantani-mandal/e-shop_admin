@@ -12,7 +12,7 @@ import { ProductService } from "../../product.service";
 export class ProductImageuploadComponent implements OnInit {
   isSelected: boolean = false;
   form: FormGroup;
-  imagePreview: string;
+  imagePreview: string[] = [];
   images = [];
   products: any;
 
@@ -32,14 +32,16 @@ export class ProductImageuploadComponent implements OnInit {
   }
 
   onFileSelected(e) {
-    if (e.target.files) {
-      for (let i = 0; i < File.length; i++) {
+    const files = (e.target as HTMLInputElement).files;
+    if (files[0]) {
+      for (let i = 0; i < files.length; i++) {
         var reader = new FileReader();
-        reader.readAsDataURL(e.target.files[i]);
-        reader.onload = (events: any) => {
-          this.images.push(events.target.result);
-          this.form.patchValue({ image: this.images });
+        this.images.push(files[i]);
+        this.form.patchValue({ image: this.images });
+        reader.onload = () => {
+          this.imagePreview.push(reader.result as string);
         };
+        reader.readAsDataURL(files[i]);
       }
     }
   }
@@ -50,28 +52,15 @@ export class ProductImageuploadComponent implements OnInit {
       .addImages(this.data.id, this.form.value.image)
       .subscribe((res) => {
         console.log(res);
-        this.router.navigate(["/dashboard/product"]);
+        this.dialModRef.close();
+        this.router.navigate(["/product"]);
       });
   }
 
-  onClose() {
-    this.dialModRef.close();
-    // this.router.navigate(["product-show"], {
-    //   relativeTo: this.route,
-    // });
-  }
+  //onClose() {
+  // this.dialModRef.close();
+  // this.router.navigate(["product-show"], {
+  //   relativeTo: this.route,
+  // });
+  //}
 }
-
-// if (event.target.files && event.target.files[0]) {
-//   var filesAmount = event.target.files.length;
-//   for (let i = 0; i < filesAmount; i++) {
-//     var reader = new FileReader();
-
-//     reader.onload = (event: any) => {
-//       console.log(event.target.result);
-//       this.images.push(event.target.result);
-//     };
-
-//     reader.readAsDataURL(event.target.files[i]);
-//   }
-// }

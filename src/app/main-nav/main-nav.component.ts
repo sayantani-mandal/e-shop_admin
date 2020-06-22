@@ -28,18 +28,11 @@ export class MainNavComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-  onSelected() {
+  onSelected(name: string) {
     this.isSelected = true;
-    this.router.navigate(["category"], { relativeTo: this.route });
+    this.router.navigate(["/" + name]);
   }
-  onSelectProduct() {
-    this.isSelected = true;
-    this.router.navigate(["product"], { relativeTo: this.route });
-  }
-  onSelectBrand() {
-    this.isSelected = true;
-    this.router.navigate(["brand"], { relativeTo: this.route });
-  }
+
   onLogout() {
     this.isSelected = true;
     this.loginService.logout();

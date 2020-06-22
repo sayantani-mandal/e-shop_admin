@@ -11,6 +11,7 @@ export class ProductComponent implements OnInit {
   isClicked: boolean = false;
   products: any;
   displayedColumns: string[] = ["proName", "brandId", "price", "createdAt"];
+  searchTerm: string;
 
   constructor(
     private proService: ProductService,
@@ -31,7 +32,7 @@ export class ProductComponent implements OnInit {
   onDel(id: string) {
     this.proService.delProducts(id).subscribe((res) => {
       alert("product successfully deleted..");
-      this.router.navigate(["/dashboard/product"]);
+      this.router.navigate(["/product"]);
     });
   }
 }

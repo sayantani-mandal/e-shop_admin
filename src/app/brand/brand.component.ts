@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { BrandService } from "./brand.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-brand",
@@ -10,6 +11,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class BrandComponent implements OnInit {
   isClicked: boolean = false;
   brands: any;
+  searchTerm: string;
   displayedColumns: string[] = [
     "brandImage",
     "brandName",
@@ -35,7 +37,7 @@ export class BrandComponent implements OnInit {
   onDel(id: string) {
     this.brandService.delBrand(id).subscribe((res) => {
       alert("Brand is deleted successfully");
-      this.router.navigate(["dashboard/brand", { relativeTo: this.route }]);
+      this.router.navigate(["/brand"]);
     });
   }
 }

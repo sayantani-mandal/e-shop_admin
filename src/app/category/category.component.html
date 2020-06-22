@@ -1,4 +1,12 @@
 <mat-card>
+  <button mat-raised-button color="warn" routerLink="/" (click)="onClick()">
+    New Category
+  </button>
+  <div *ngIf="isClicked">
+    <router-outlet></router-outlet>
+  </div>
+  <br />
+  <br />
   <table mat-table [dataSource]="categories" class="mat-elevation-z8">
     <ng-container matColumnDef="catName">
       <th mat-header-cell *matHeaderCellDef style="font-size: large;">Name</th>
@@ -20,7 +28,12 @@
         <button mat-raised-button color="primary" style="color: yellow;">
           Details</button
         >|
-        <button mat-raised-button color="primary" style="color: yellow;">
+        <button
+          mat-raised-button
+          color="primary"
+          style="color: yellow;"
+          (click)="onEdit(row._id)"
+        >
           Edit</button
         >|
         <button mat-button style="color: red;" (click)="onDel(row._id)">
@@ -33,12 +46,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   <br />
-  <button mat-raised-button color="accent" routerLink="/" (click)="onClick()">
-    New Category
-  </button>
-  <div *ngIf="isClicked">
-    <router-outlet></router-outlet>
-  </div>
 </mat-card>
 
 <!-- <ng-container matColumnDef="brands">

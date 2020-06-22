@@ -1,4 +1,8 @@
 <mat-card>
+  <div class="alert alert-danger" *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+  <br />
   <form [formGroup]="form" (submit)="onSelect()">
     <h5>Category Name</h5>
     <mat-form-field appearance="fill">
@@ -31,10 +35,3 @@
     </section>
   </form>
 </mat-card>
-
-<!-- <h5>Category Image</h5>
-  <input type="file" (change)="onFileSelected($event)" />
-  <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
-    <img [src]="imagePreview" [alt]="form.value.name" />
-  </div>
-  <br /> -->

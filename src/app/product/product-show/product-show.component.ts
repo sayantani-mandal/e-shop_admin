@@ -84,16 +84,5 @@ export class ProductShowComponent implements OnInit {
       );
 
     console.log(this.form.value.name);
-    // this.router.navigate(["product-imageupload"], {
-    //   relativeTo: this.route,
-    // });
-    // const dialogConfig = new MatDialogConfig();
-
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.width = "60%";
-    // dialogConfig.height = "60%";
-
-    // this.dialog.open(ProductImageuploadComponent, dialogConfig);
   }
 }

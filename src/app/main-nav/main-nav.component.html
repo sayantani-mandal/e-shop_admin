@@ -7,26 +7,35 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="false"
   >
-    <mat-toolbar color="primary">Home</mat-toolbar>
+    <mat-toolbar color="primary"
+      ><mat-icon>business_center</mat-icon></mat-toolbar
+    >
     <mat-nav-list class="bgimg">
       <a
         mat-list-item
         routerLink="/"
-        (click)="onSelectBrand()"
+        (click)="onSelected('dashboard')"
+        style="color: whitesmoke;"
+        >Home</a
+      >
+      <a
+        mat-list-item
+        routerLink="/"
+        (click)="onSelected('brand')"
         style="color: whitesmoke;"
         >Brand</a
       >
       <a
         mat-list-item
         routerLink="/"
-        (click)="onSelected()"
+        (click)="onSelected('category')"
         style="color: whitesmoke;"
         >Category</a
       >
       <a
         mat-list-item
         routerLink="/"
-        (click)="onSelectProduct()"
+        (click)="onSelected('product')"
         style="color: whitesmoke;"
         >Product</a
       >
@@ -59,7 +68,7 @@
       </mat-menu>
     </mat-toolbar>
 
-    <div *ngIf="isSelected">
+    <div>
       <!-- <app-category></app-category> -->
       <router-outlet></router-outlet>
     </div>

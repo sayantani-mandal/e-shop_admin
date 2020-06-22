@@ -1,16 +1,22 @@
 <div class="product-class">
-  <br /><br />
-  <button
-    mat-raised-button
-    color="accent"
-    style="float: right;"
-    routerLink="/"
-    (click)="onClick()"
+  <mat-card
+    ><mat-icon>search</mat-icon>
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [(ngModel)]="searchTerm" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="warn"
+      style="float: right;"
+      routerLink="/"
+      (click)="onClick()"
+    >
+      New Product
+    </button></mat-card
   >
-    New Product
-  </button>
 
-  <div *ngFor="let product of products">
+  <div *ngFor="let product of products | productFilter: searchTerm">
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image">
@@ -30,7 +36,7 @@
       </mat-card-header>
       <img
         mat-card-image
-        [src]="'http://localhost:3006/' + product.proImages[1].proImage"
+        [src]="'http://localhost:3006/' + product.proImages[0].proImage"
         alt="Image of the Product"
       />
       <mat-card-content>

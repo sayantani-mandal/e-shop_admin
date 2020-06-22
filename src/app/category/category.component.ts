@@ -29,11 +29,17 @@ export class CategoryComponent implements OnInit {
     this.isClicked = true;
     this.router.navigate(["category-show"], { relativeTo: this.route });
   }
+  onEdit(id: string) {
+    this.isClicked = true;
+    this.router.navigate(["category-edit"], {
+      relativeTo: this.route,
+    });
+  }
 
   onDel(id: string) {
     this.catService.delCategory(id).subscribe((res) => {
       alert("Category is successfully deleted..");
-      this.router.navigate(["/dashboard/category"]);
+      this.router.navigate(["/category"]);
     });
   }
 }
