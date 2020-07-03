@@ -10,9 +10,8 @@ const routes: Routes = [
     path: "",
     component: CategoryComponent,
   },
-  { path: "category", component: CategoryComponent },
-  { path: "category/category-show", component: CategoryShowComponent },
-  { path: "category/category-edit", component: CategoryEditComponent },
+  { path: "category-show", component: CategoryShowComponent },
+  { path: "category-edit", component: CategoryEditComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

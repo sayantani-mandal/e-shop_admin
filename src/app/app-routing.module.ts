@@ -1,12 +1,10 @@
 import { NgModule } from "@angular/core";
 import { MainNavComponent } from "./main-nav/main-nav.component";
-import { CategoryComponent } from "./category/category.component";
-import { Routes, RouterModule, PreloadingStrategy } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./login/login.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { ProductComponent } from "./product/product.component";
 import { AuthGuardService } from "./auth-guard.service";
-import { CategoryShowComponent } from "./category/category-show/category-show.component";
 import { ProductShowComponent } from "./product/product-show/product-show.component";
 import { ProductImageuploadComponent } from "./product/product-show/product-imageupload/product-imageupload.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -28,6 +26,7 @@ const appRoutes: Routes = [
       //   loadChildren: () =>
       //     import("./brand/brand.module").then((m) => m.BrandModule),
       // },
+
       {
         path: "category",
         loadChildren: () =>
@@ -35,6 +34,10 @@ const appRoutes: Routes = [
             (m) => m.CategoriesModule
           ),
       },
+      // {
+      //   path: "category",
+      //   loadChildren: "./category/categories.module#CategoriesModule",
+      // },
       { path: "product", component: ProductComponent },
       { path: "product/product-show", component: ProductShowComponent },
       {
@@ -44,12 +47,12 @@ const appRoutes: Routes = [
     ],
     canActivate: [AuthGuardService],
   },
-  // {
-  //   path: "not-found",
-  //   component: PageNotFoundComponent,
-  //   canActivate: [AuthGuardService],
-  // },
-  // { path: "**", redirectTo: "/not-found" },
+  {
+    path: "not-found",
+    component: PageNotFoundComponent,
+    canActivate: [AuthGuardService],
+  },
+  { path: "**", redirectTo: "/not-found" },
 ];
 
 @NgModule({

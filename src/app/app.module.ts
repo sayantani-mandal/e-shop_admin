@@ -17,6 +17,7 @@ import { ProductFilterPipe } from "./product/product-filter.pipe";
 import { BrandModule } from "./brand/brand.module";
 import { CategoriesModule } from "./category/categories.module";
 import { CoreModule } from "./core.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CoreModule } from "./core.module";
     BrandModule,
     //CategoriesModule,
     CoreModule,
+    BrowserAnimationsModule,
   ],
 
   bootstrap: [AppComponent],

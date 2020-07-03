@@ -61,6 +61,8 @@ export class CategoryShowComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    this.authStatus.unsubscribe();
+    if (this.authStatus) {
+      this.authStatus.unsubscribe();
+    }
   }
 }

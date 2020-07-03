@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { MatButtonModule } from "@angular/material";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 import { LayoutModule } from "@angular/cdk/layout";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -19,7 +19,6 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 const modules = [
-  BrowserAnimationsModule,
   MatButtonModule,
   LayoutModule,
   MatToolbarModule,

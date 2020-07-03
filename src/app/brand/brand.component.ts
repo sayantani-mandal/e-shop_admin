@@ -28,6 +28,8 @@ export class BrandComponent implements OnInit {
   ngOnInit() {
     this.brandService.getBrand().subscribe((res) => {
       this.brands = res;
+      console.log(res[0].brandName);
+      console.log(this.brands[0].brandName);
     });
   }
   onClick() {
