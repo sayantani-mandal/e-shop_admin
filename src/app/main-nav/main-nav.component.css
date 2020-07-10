@@ -31,11 +31,12 @@
   height: 100%;
   display: block;
   width: 100%;
-  background: url("C:\Users\Sayantani\nodeAngular\blue1.jpg");
+  
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* background: url("C:\Users\Sayantani\nodeAngular\blue1.jpg"); */
 
 .sidenav {
   width: 200px;

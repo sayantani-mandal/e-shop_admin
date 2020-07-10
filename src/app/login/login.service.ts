@@ -17,11 +17,17 @@ export class LoginService {
       email: email,
       password: password,
     };
+    console.log(authData);
+    
     this.http
       .post<{ token: string }>("http://localhost:3006/api/adminLogin", authData)
       .subscribe(
         (response) => {
+          console.log(response);
+          console.log(localStorage.getItem("token"));
+          
           localStorage.setItem("token", response.token);
+          console.log(localStorage.getItem("token"));
           this.token = response.token;
           const token = this.token;
           if (token) {
