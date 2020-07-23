@@ -1,17 +1,17 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { CategoryComponent } from "./category.component";
-import { CategoryShowComponent } from "./category-show/category-show.component";
-import { MainNavComponent } from "../main-nav/main-nav.component";
-import { CategoryEditComponent } from "./category-edit/category-edit.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CategoryComponent } from './category.component';
+import { CategoryShowComponent } from './category-show/category-show.component';
+import { MainNavComponent } from '../main-nav/main-nav.component';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: CategoryComponent,
   },
-  { path: "category-show", component: CategoryShowComponent },
-  { path: "category-edit", component: CategoryEditComponent },
+  { path: 'category-show', component: CategoryShowComponent },
+  { path: 'category-edit', component: CategoryEditComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

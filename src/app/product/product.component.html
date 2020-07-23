@@ -1,4 +1,4 @@
-<div class="product-class">
+<!-- <div class="product-class">
   <mat-card
     ><mat-icon>search</mat-icon>
     <mat-form-field>
@@ -36,6 +36,7 @@
       </mat-card-header>
       <img
         mat-card-image
+        class="imgs"
         [src]="'http://localhost:3006/' + product.proImages[0].proImage"
         alt="Image of the Product"
       />
@@ -52,8 +53,191 @@
     <br /><br />
   </div>
   <br />
-</div>
+</div> -->
+
 <!-- <mat-card-subtitle>{{
           product.categories[0].brands[0].brandName
         }}</mat-card-subtitle>
         <p>{{ product.proDes }}</p> -->
+
+<div class="product-class">
+  <mat-card
+    ><mat-icon>search</mat-icon>
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [(ngModel)]="searchTerm" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="warn"
+      style="float: right;"
+      routerLink="/"
+      (click)="onClick()"
+    >
+      New Product
+    </button></mat-card
+  >
+
+  <div *ngFor="let product of products | productFilter: searchTerm">
+    <mat-grid-list cols="2" rowHeight="5:5">
+      <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <!-- <div mat-card-avatar class="example-header-image">
+              <img
+                mat-card-image
+                [src]="
+                  'http://localhost:3006/' +
+                  product.categories[0].brands[0].brandImage
+                "
+                alt="Image of the Brand"
+              />
+            </div> -->
+            <mat-card-title>{{ product.proName }}</mat-card-title>
+            <mat-card-subtitle>{{
+              product.categories[0].catName
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            class="imgs"
+            [src]="'http://localhost:3006/' + product.proImages[0].proImage"
+            alt="Image of the Product"
+          />
+          <mat-card-content>
+            <p>Rs : {{ product.price }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="openDialog(formModal, product)"
+            >
+              EDIT
+            </button>
+            <button mat-raised-button color="warn" (click)="onDel(product._id)">
+              DELETE
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+      <br /><br />
+    </mat-grid-list>
+  </div>
+  <br />
+</div>
+
+<br />
+<br />
+
+<ng-template #formModal>
+  <h2>Product Update</h2>
+  <br />
+  <mat-card>
+    <form [formGroup]="form" (submit)="updateProduct()">
+      <h6>Product Name</h6>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter the Name</mat-label>
+        <input
+          matInput
+          type="text"
+          value="{{ selectedProduct.proName }}"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <br />
+
+      <h6>Product Description</h6>
+      <mat-form-field appearance="fill">
+        <mat-label>give details</mat-label>
+        <input
+          matInput
+          type="text"
+          value="{{ selectedProduct.proDes }}"
+          formControlName="desc"
+        />
+      </mat-form-field>
+      <br />
+
+      <h6>Product Specification</h6>
+      <mat-form-field appearance="fill">
+        <mat-label>give Specification</mat-label>
+        <input
+          matInput
+          type="text"
+          value="{{ selectedProduct.proSpec }}"
+          formControlName="spec"
+        />
+      </mat-form-field>
+      <br />
+
+      <!-- <h6>Select Category</h6>
+      <div style="width: 20%;">
+        <mat-label>Categories</mat-label>
+        <mat-select formControlName="cat">
+          <mat-option *ngFor="let cat of categories" [value]="cat._id">{{
+            cat.catName
+          }}</mat-option>
+        </mat-select>
+      </div>
+      <br /> -->
+
+      <!-- <h6>Select Brands</h6>
+      <div style="width: 20%;">
+        <mat-label>Brands</mat-label>
+        <mat-select formControlName="brand">
+          <mat-option *ngFor="let brand of brands" [value]="brand._id">{{
+            brand.brandName
+          }}</mat-option>
+        </mat-select>
+      </div>
+      <br /> -->
+
+      <h6>Select Category</h6>
+
+      <mat-radio-group formControlName="cat">
+        <mat-radio-button
+          class="material-radio"
+          *ngFor="let cat of categories"
+          [checked]="selectedProduct.categoryId == cat._id"
+          [value]="cat._id"
+          >{{ cat.catName }}</mat-radio-button
+        >
+      </mat-radio-group>
+      <br />
+
+      <h6>Select Brand</h6>
+
+      <mat-radio-group formControlName="brand">
+        <mat-radio-button
+          class="material-radio"
+          *ngFor="let brand of brands"
+          [checked]="selectedProduct.brandId == brand._id"
+          [value]="brand._id"
+          >{{ brand.brandName }}</mat-radio-button
+        >
+      </mat-radio-group>
+
+      <h6>Price</h6>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter the price</mat-label>
+        <input
+          matInput
+          type="number"
+          value="{{ selectedProduct.price }}"
+          formControlName="price"
+        />
+      </mat-form-field>
+      <br />
+
+      <section>
+        <button mat-raised-button color="accent" mat-dialog-close type="submit">
+          Update
+        </button>
+      </section>
+      <br />
+
+      <br />
+    </form>
+  </mat-card>
+</ng-template>

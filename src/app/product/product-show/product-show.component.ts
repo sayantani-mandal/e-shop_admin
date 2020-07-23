@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { ProductService } from "../product.service";
-import { CategoryService } from "src/app/category/category.service";
-import { BrandService } from "src/app/brand/brand.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { MatDialog, MatDialogConfig } from "@angular/material";
-import { ProductImageuploadComponent } from "./product-imageupload/product-imageupload.component";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProductService } from '../product.service';
+import { CategoryService } from 'src/app/category/category.service';
+import { BrandService } from 'src/app/brand/brand.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { ProductImageuploadComponent } from './product-imageupload/product-imageupload.component';
 
 @Component({
-  selector: "app-product-show",
-  templateUrl: "./product-show.component.html",
-  styleUrls: ["./product-show.component.css"],
+  selector: 'app-product-show',
+  templateUrl: './product-show.component.html',
+  styleUrls: ['./product-show.component.css'],
 })
 export class ProductShowComponent implements OnInit {
   form: FormGroup;
@@ -65,13 +65,13 @@ export class ProductShowComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res._id);
-          //this.router.navigate(["/products/proImages", res._id]);
+          // this.router.navigate(["/products/proImages", res._id]);
           const dialogConfig = new MatDialogConfig();
 
           dialogConfig.disableClose = true;
           dialogConfig.autoFocus = true;
-          dialogConfig.width = "60%";
-          dialogConfig.height = "60%";
+          dialogConfig.width = '60%';
+          dialogConfig.height = '60%';
           dialogConfig.data = {
             id: res._id,
           };

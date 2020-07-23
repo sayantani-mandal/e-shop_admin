@@ -31,7 +31,7 @@
   height: 100%;
   display: block;
   width: 100%;
-  
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -39,6 +39,7 @@
 /* background: url("C:\Users\Sayantani\nodeAngular\blue1.jpg"); */
 
 .sidenav {
+  background-color: blue;
   width: 200px;
   box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
 }

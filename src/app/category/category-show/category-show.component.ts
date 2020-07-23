@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { CategoryService } from "../category.service";
-import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
-import { BrandService } from "src/app/brand/brand.service";
-import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CategoryService } from '../category.service';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { BrandService } from 'src/app/brand/brand.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "app-category-show",
-  templateUrl: "./category-show.component.html",
-  styleUrls: ["./category-show.component.css"],
+  selector: 'app-category-show',
+  templateUrl: './category-show.component.html',
+  styleUrls: ['./category-show.component.css'],
 })
 export class CategoryShowComponent implements OnInit, OnDestroy {
   form: FormGroup;

@@ -1,8 +1,8 @@
-import { Category } from "../shared/category.model";
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Subject } from "rxjs";
-import { Router } from "@angular/router";
+import { Category } from '../shared/category.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CategoryService {
@@ -14,11 +14,11 @@ export class CategoryService {
 
   constructor(private http: HttpClient, private router: Router) {}
   getCategories() {
-    return this.http.get("http://localhost:3006/api/categories");
+    return this.http.get('http://localhost:3006/api/categories');
   }
 
   delCategory(id: string) {
-    return this.http.get("http://localhost:3006/api/categories/" + id);
+    return this.http.get('http://localhost:3006/api/categories/' + id);
   }
 
   addCategory(catName: string, catDes: string, brandId: any) {
@@ -28,10 +28,10 @@ export class CategoryService {
       brandIds: brandId,
     };
 
-    this.http.post("http://localhost:3006/api/categories", postData).subscribe(
+    this.http.post('http://localhost:3006/api/categories', postData).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(["/category"]);
+        this.router.navigate(['/category']);
       },
       (error) => {
         console.log(error);

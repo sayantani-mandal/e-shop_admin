@@ -15,5 +15,14 @@ table {
   align-content: center;
 }
 .mat-card {
+  object-fit: cover;
   text-align: center;
+}
+
+.imgs {
+  height: 150px;
+  width: 150px;
+}
+.mat-grid-tile {
+  background: lightsalmon;
 }

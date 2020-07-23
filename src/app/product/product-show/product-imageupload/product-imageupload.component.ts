@@ -1,13 +1,13 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { Router, ActivatedRoute } from "@angular/router";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { ProductService } from "../../product.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProductService } from '../../product.service';
 
 @Component({
-  selector: "app-product-imageupload",
-  templateUrl: "./product-imageupload.component.html",
-  styleUrls: ["./product-imageupload.component.css"],
+  selector: 'app-product-imageupload',
+  templateUrl: './product-imageupload.component.html',
+  styleUrls: ['./product-imageupload.component.css'],
 })
 export class ProductImageuploadComponent implements OnInit {
   isSelected: boolean = false;
@@ -53,14 +53,14 @@ export class ProductImageuploadComponent implements OnInit {
       .subscribe((res) => {
         console.log(res);
         this.dialModRef.close();
-        this.router.navigate(["/product"]);
+        this.router.navigate(['/product']);
       });
   }
 
-  //onClose() {
+  //  onClose() {
   // this.dialModRef.close();
   // this.router.navigate(["product-show"], {
   //   relativeTo: this.route,
   // });
-  //}
+  // }
 }

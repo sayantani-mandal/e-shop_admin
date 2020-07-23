@@ -1,26 +1,26 @@
-import { NgModule } from "@angular/core";
-import { MainNavComponent } from "./main-nav/main-nav.component";
-import { Routes, RouterModule } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
-import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { ProductComponent } from "./product/product.component";
-import { AuthGuardService } from "./auth-guard.service";
-import { ProductShowComponent } from "./product/product-show/product-show.component";
-import { ProductImageuploadComponent } from "./product/product-show/product-imageupload/product-imageupload.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { BrandComponent } from "./brand/brand.component";
-import { BrandShowComponent } from "./brand/brand-show/brand-show.component";
+import { NgModule } from '@angular/core';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProductComponent } from './product/product.component';
+import { AuthGuardService } from './auth-guard.service';
+import { ProductShowComponent } from './product/product-show/product-show.component';
+import { ProductImageuploadComponent } from './product/product-show/product-imageupload/product-imageupload.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrandComponent } from './brand/brand.component';
+import { BrandShowComponent } from './brand/brand-show/brand-show.component';
 
 const appRoutes: Routes = [
-  { path: "", redirectTo: "/login", pathMatch: "full" },
-  { path: "login", component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   {
-    path: "",
+    path: '',
     component: MainNavComponent,
     children: [
-      { path: "dashboard", component: DashboardComponent },
-      { path: "brand", component: BrandComponent },
-      { path: "brand/brand-show", component: BrandShowComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'brand', component: BrandComponent },
+      { path: 'brand/brand-show', component: BrandShowComponent },
       // {
       //   path: "brand",
       //   loadChildren: () =>
@@ -28,9 +28,9 @@ const appRoutes: Routes = [
       // },
 
       {
-        path: "category",
+        path: 'category',
         loadChildren: () =>
-          import("./category/categories.module").then(
+          import('./category/categories.module').then(
             (m) => m.CategoriesModule
           ),
       },
@@ -38,21 +38,21 @@ const appRoutes: Routes = [
       //   path: "category",
       //   loadChildren: "./category/categories.module#CategoriesModule",
       // },
-      { path: "product", component: ProductComponent },
-      { path: "product/product-show", component: ProductShowComponent },
+      { path: 'product', component: ProductComponent },
+      { path: 'product/product-show', component: ProductShowComponent },
       {
-        path: "product/product-show/product-imageupload",
+        path: 'product/product-show/product-imageupload',
         component: ProductImageuploadComponent,
       },
     ],
     canActivate: [AuthGuardService],
   },
   {
-    path: "not-found",
+    path: 'not-found',
     component: PageNotFoundComponent,
     canActivate: [AuthGuardService],
   },
-  { path: "**", redirectTo: "/not-found" },
+  { path: '**', redirectTo: '/not-found' },
 ];
 
 @NgModule({
