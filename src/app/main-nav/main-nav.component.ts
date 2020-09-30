@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { Observable } from "rxjs";
-import { map, shareReplay } from "rxjs/operators";
-import { ActivatedRoute, Router } from "@angular/router";
-import { LoginService } from "../login/login.service";
+import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 
 @Component({
-  selector: "app-main-nav",
-  templateUrl: "./main-nav.component.html",
-  styleUrls: ["./main-nav.component.css"],
+  selector: 'app-main-nav',
+  templateUrl: './main-nav.component.html',
+  styleUrls: ['./main-nav.component.css'],
 })
 export class MainNavComponent implements OnInit {
   isSelected: boolean = false;
@@ -30,7 +30,7 @@ export class MainNavComponent implements OnInit {
   ngOnInit() {}
   onSelected(name: string) {
     this.isSelected = true;
-    this.router.navigate(["/" + name]);
+    this.router.navigate(['/' + name]);
   }
 
   onLogout() {

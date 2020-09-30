@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { LoginService } from "./login.service";
-import { Subscription } from "rxjs";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { LoginService } from './login.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   email: string;

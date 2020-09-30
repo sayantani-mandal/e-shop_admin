@@ -1,7 +1,7 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "brandFilter",
+  name: 'brandFilter',
 })
 export class BrandFilterPipe implements PipeTransform {
   transform(brands: any, searchTerm: string) {

@@ -1,0 +1,85 @@
+<mat-card>
+  <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="product.proName">
+      <th mat-header-cell *matHeaderCellDef>Product Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.product.proName }}</td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="user.mobileNumber">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.user.mobileNumber }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.createdAt | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price*quantity">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.price * element.quantity }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle
+            [checked]="element.status === 'pending'"
+            (click)="changeStatus('pending', element._id)"
+            >P</mat-button-toggle
+          >
+          <mat-button-toggle
+            [checked]="element.status === 'completed'"
+            (click)="changeStatus('completed', element._id)"
+            >S</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+
+        <!-- <div *ngIf="element.status === 'pending'">
+          <button mat-raised-button color="primary">
+            Confirm
+          </button>
+        </div> -->
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-card>

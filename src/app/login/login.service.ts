@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
-import { Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class LoginService {
   private token: string;
@@ -18,20 +18,20 @@ export class LoginService {
       password: password,
     };
     console.log(authData);
-    
+
     this.http
-      .post<{ token: string }>("http://localhost:3006/api/adminLogin", authData)
+      .post<{ token: string }>('http://localhost:3006/api/adminLogin', authData)
       .subscribe(
         (response) => {
           console.log(response);
-          console.log(localStorage.getItem("token"));
-          
-          localStorage.setItem("token", response.token);
-          console.log(localStorage.getItem("token"));
+          console.log(localStorage.getItem('token'));
+
+          localStorage.setItem('token', response.token);
+          console.log(localStorage.getItem('token'));
           this.token = response.token;
           const token = this.token;
           if (token) {
-            this.router.navigate(["/dashboard"]);
+            this.router.navigate(['/dashboard']);
           }
         },
         (error) => {
@@ -43,18 +43,18 @@ export class LoginService {
   }
 
   getToken() {
-    this.token = localStorage.getItem("token");
+    this.token = localStorage.getItem('token');
     return this.token;
   }
   logout() {
     this.http
-      .get("http://localhost:3006/api/adminLogin/logout", {
+      .get('http://localhost:3006/api/adminLogin/logout', {
         headers: { token: this.token },
       })
       .subscribe((response) => {
         console.log(response);
-        localStorage.removeItem("token");
-        this.router.navigate(["/login"]);
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
       });
   }
 

@@ -10,6 +10,7 @@ import { ProductImageuploadComponent } from './product/product-show/product-imag
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrandComponent } from './brand/brand.component';
 import { BrandShowComponent } from './brand/brand-show/brand-show.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
         path: 'product/product-show/product-imageupload',
         component: ProductImageuploadComponent,
       },
+      { path: 'admin-orders', component: AdminOrdersComponent },
     ],
     canActivate: [AuthGuardService],
   },

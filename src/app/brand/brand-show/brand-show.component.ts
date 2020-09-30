@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { BrandService } from "../brand.service";
-import { HttpClient } from "@angular/common/http";
-import { FormGroup, Validators, FormControl } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { BrandService } from '../brand.service';
+import { HttpClient } from '@angular/common/http';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-brand-show",
-  templateUrl: "./brand-show.component.html",
-  styleUrls: ["./brand-show.component.css"],
+  selector: 'app-brand-show',
+  templateUrl: './brand-show.component.html',
+  styleUrls: ['./brand-show.component.css'],
 })
 export class BrandShowComponent implements OnInit {
   brandName: string;
@@ -40,19 +40,19 @@ export class BrandShowComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          this.router.navigate(["/brand"]);
+          this.router.navigate(['/brand']);
         },
         (error) => {
           console.log(error.error.Error);
           this.error = error.error.Error;
           // alert(this.error);
         }
-      ); //this.form.reset();
+      ); // this.form.reset();
   }
   onFileSelected(event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ image: file });
-    this.form.get("image").updateValueAndValidity();
+    this.form.get('image').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result as string;
